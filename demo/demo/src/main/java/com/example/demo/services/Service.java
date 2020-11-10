@@ -14,7 +14,7 @@ import java.util.List;
 public class Service {
     //pliki_strony_kontroler/kalendarz.php?rok=" + rok + "&miesiac=" + miesiac + "&lang=" + lang;
     private static final String CALENDAR_ENDPOINT = "http://www.weeia.p.lodz.pl/pliki_strony_kontroler/kalendarz.php";
-    public List<String> getCalendar(int year, int month) throws IOException {
+    public List<String> getCalendar(String year, String month) throws IOException {
         //jsoup - biblioteka do pobierania danych z stron www
 
         //pobieranie źródła strony www
@@ -24,7 +24,7 @@ public class Service {
         //wyciąganie informacji z dokumentu
         Elements daysElements = document.select("a.active");
         Elements eventNamesElements = document.select("div.InnerBox");
-        
+
 
         //lista glowna
         List<String> events = new ArrayList<>();

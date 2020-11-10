@@ -18,7 +18,7 @@ public class Endpoint {
     }
 
     @GetMapping("/calendar/{year}/{month}")
-    public List<String> getResult(@PathVariable int year, @PathVariable int month) throws IOException {
+    public List<String> getResult(@PathVariable String year, @PathVariable String month) throws IOException {
         return service.getCalendar(year,month);
     }
 }
