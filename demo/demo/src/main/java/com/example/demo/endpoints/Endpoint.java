@@ -4,6 +4,9 @@ import com.example.demo.services.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 public class Endpoint {
@@ -15,7 +18,7 @@ public class Endpoint {
     }
 
     @GetMapping("/calendar/{year}/{month}")
-    public String getResult(@PathVariable int year, @PathVariable int month) {
+    public List<String> getResult(@PathVariable int year, @PathVariable int month) throws IOException {
         return service.getCalendar(year,month);
     }
 }
