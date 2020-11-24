@@ -34,17 +34,12 @@ public class Service {
         //wyciąganie informacji z dokumentu
         Elements daysElements = document.select("a.active");
         Elements eventNamesElements = document.select("div.InnerBox");
-
-
-        //lista glowna
-        List<String> events = new ArrayList<>();
-
+        
         //utworzenie kalendarza
         ICalendar ical = new ICalendar();
         for(int i = 0; i < daysElements.size(); i++) {
             String day = daysElements.get(i).text();
             String event = eventNamesElements.get(i).text();
-            events.add(day+" "+event);
 
             //utworzenie wydarzenia
             VEvent vEvent = new VEvent();
@@ -67,7 +62,6 @@ public class Service {
 
         File file = new File("Month" + month+ "Year"+ year + "Calendar.ics");
         Biweekly.write(ical).go(file);
-        //return events;
 
         Resource fileStreamResource = new FileSystemResource(file);
         return ResponseEntity.ok()
