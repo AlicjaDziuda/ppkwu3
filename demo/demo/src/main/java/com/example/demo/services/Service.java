@@ -25,6 +25,9 @@ public class Service {
     //pliki_strony_kontroler/kalendarz.php?rok=" + rok + "&miesiac=" + miesiac + "&lang=" + lang;
     private static final String CALENDAR_ENDPOINT = "http://www.weeia.p.lodz.pl/pliki_strony_kontroler/kalendarz.php";
     public ResponseEntity<?> getCalendar(String year, String month) throws IOException {
+        if(Integer.parseInt(month)>12 || Integer.parseInt(month)<1) {
+            return  ResponseEntity.badRequest().body("Nie prawidłowy miesiąc");
+        }
         //jsoup - biblioteka do pobierania danych z stron www
 
         //pobieranie źródła strony www
@@ -34,7 +37,7 @@ public class Service {
         //wyciąganie informacji z dokumentu
         Elements daysElements = document.select("a.active");
         Elements eventNamesElements = document.select("div.InnerBox");
-        
+
         //utworzenie kalendarza
         ICalendar ical = new ICalendar();
         for(int i = 0; i < daysElements.size(); i++) {
