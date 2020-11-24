@@ -7,6 +7,8 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +21,7 @@ import java.util.List;
 public class Service {
     //pliki_strony_kontroler/kalendarz.php?rok=" + rok + "&miesiac=" + miesiac + "&lang=" + lang;
     private static final String CALENDAR_ENDPOINT = "http://www.weeia.p.lodz.pl/pliki_strony_kontroler/kalendarz.php";
-    public List<String> getCalendar(String year, String month) throws IOException {
+    public ResponseEntity<?> getCalendar(String year, String month) throws IOException {
         //jsoup - biblioteka do pobierania danych z stron www
 
         //pobieranie źródła strony www
@@ -62,6 +64,7 @@ public class Service {
 
         File file = new File("Month" + month+ "Year"+ year + "Calendar.ics");
         Biweekly.write(ical).go(file);
-        return events;
+        //return events;
+        return new ResponseEntity<>(events, HttpStatus.OK);
     }
 }

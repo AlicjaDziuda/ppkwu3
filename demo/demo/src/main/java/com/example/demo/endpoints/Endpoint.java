@@ -2,6 +2,7 @@ package com.example.demo.endpoints;
 
 import com.example.demo.services.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -18,7 +19,7 @@ public class Endpoint {
     }
 
     @GetMapping("/calendar/{year}/{month}")
-    public List<String> getResult(@PathVariable String year, @PathVariable String month) throws IOException {
+    public ResponseEntity<?> getResult(@PathVariable String year, @PathVariable String month) throws IOException {
         return service.getCalendar(year,month);
     }
 }
