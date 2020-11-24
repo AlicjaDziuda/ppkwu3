@@ -1,16 +1,17 @@
 ## MOBILNY KALENDARZ WEEIA
 
 ## Co robi usługa ? 
-Usługa na ten moment zwraca listę eventów pobraną z kalendarza na stronie wydziału EEIA.
+Usługa generuje kalendarz w formacie ics dla kalendarza ze strony http://www.weeia.p.lodz.pl/.
 
-## Aby użyć tego api należy wpisać (miesiące od stycznia do września koniecznie z początkowym 0:
+## Aby użyć tego api należy wpisać (miesiące od stycznia do września koniecznie z początkowym 0):
 ```
 http://localhost:8080/api/calendar/2020/03
 ```
 
 ## Otrzymana odpowiedź:
+# Wygenerowany plik isc w którm zapisano wszystkie wydarzenia oznaczone na kalendarzu ze strony http://www.weeia.p.lodz.pl/ w podanym miesiącu i roku.
+## Jeżeli użytkownik wprowadzi miesiąc który nie istnieje, np 0, 00, -54, 243 to otrzyma informacje :	
 ```
-["9 First Step to Fields Medal","13 Finał konkursu InfoSukces","16 Matura próbna Matematyka podstawowa","17 Matura próbna Matematyka rozszerzona","18 Matura próbna Fizyka rozszerzona","19 Matura próbna Chemia rozszerzona","23 Finał konkursu Fascynująca Fizyka - poziom podstawowy","25 Finał konkursu Fascynująca Fizyka - poziom ponadpodstawowy","27 Finał konkursu Piękne doświadczenie, Fascynujące Wyjaśnienie"]
+Nie prawidłowy miesiąc
 ```
-	
 
