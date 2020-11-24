@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import biweekly.Biweekly;
 import biweekly.ICalendar;
 import biweekly.component.VEvent;
 import org.jsoup.Connection;
@@ -7,8 +8,10 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @org.springframework.stereotype.Service
@@ -41,9 +44,24 @@ public class Service {
             //utworzenie wydarzenia
             VEvent vEvent = new VEvent();
 
-            
+            //tytul wydarzenia
+            vEvent.setSummary(event);
+
+            //data wydarzenia - rok, miesiac, dzien
+            Calendar date = Calendar.getInstance();
+            date.set(Integer.parseInt(year), Integer.parseInt(month) - 1, Integer.parseInt(day));
+
+            //czas
+            vEvent.setDateStart(date.getTime());
+            vEvent.setDateEnd(date.getTime());
+
+            //dodanie wydarzenia do kalendarza
+            ical.addEvent(vEvent);
 
         }
+
+        File file = new File("Month" + month+ "Year"+ year + "Calendar.ics");
+        Biweekly.write(ical).go(file);
         return events;
     }
 }
