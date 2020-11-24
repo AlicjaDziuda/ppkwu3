@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import biweekly.ICalendar;
+import biweekly.component.VEvent;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -29,10 +31,18 @@ public class Service {
         //lista glowna
         List<String> events = new ArrayList<>();
 
+        //utworzenie kalendarza
+        ICalendar ical = new ICalendar();
         for(int i = 0; i < daysElements.size(); i++) {
             String day = daysElements.get(i).text();
             String event = eventNamesElements.get(i).text();
             events.add(day+" "+event);
+
+            //utworzenie wydarzenia
+            VEvent vEvent = new VEvent();
+
+            
+
         }
         return events;
     }
