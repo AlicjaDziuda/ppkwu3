@@ -3,7 +3,7 @@
 ## Co robi usługa ? 
 Usługa generuje kalendarz w formacie ics dla kalendarza ze strony http://www.weeia.p.lodz.pl/.
 
-## Aby użyć tego api należy wpisać (miesiące od stycznia do września koniecznie z początkowym 0):
+## Aby użyć tego api należy wpisać:
 ```
 http://localhost:8080/api/calendar/2020/03
 ```
