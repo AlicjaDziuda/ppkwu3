@@ -7,7 +7,10 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import java.io.File;
@@ -65,6 +68,10 @@ public class Service {
         File file = new File("Month" + month+ "Year"+ year + "Calendar.ics");
         Biweekly.write(ical).go(file);
         //return events;
-        return new ResponseEntity<>(events, HttpStatus.OK);
+
+        Resource fileStreamResource = new FileSystemResource(file);
+        return ResponseEntity.ok()
+                             .contentType(MediaType.parseMediaType("text/calendar"))
+                             .body(fileStreamResource);
     }
 }
