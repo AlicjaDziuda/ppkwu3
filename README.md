@@ -1,23 +1,40 @@
-## MOBILNY KALENDARZ WEEIA
+# MOBILNY KALENDARZ WEEIA
+Usługa generuje kalendarz w formacie ics dla kalendarza ze strony [wydziału EEIA](http://www.weeia.p.lodz.pl/).
 
-## Co robi usługa ? 
-Usługa generuje kalendarz w formacie ics dla kalendarza ze strony http://www.weeia.p.lodz.pl/.
+## Poprawny sposób użycia
+### Zapytanie:
 
-## Aby użyć tego api należy wpisać:
+
 ```
 http://localhost:8080/api/calendar/2020/03
 ```
-### Otrzymana odpowiedź to:
-### Wygenerowany plik ics w którm zapisano wszystkie wydarzenia oznaczone na kalendarzu ze strony http://www.weeia.p.lodz.pl/ w podanym miesiącu i roku.
-##
-##### Konieczne jest aby miesiące od stycznia do września poprzedzać 0, wprowadzając np,
+
+### Odpowiedź:
+
+##### Wygenerowany plik ics dla podanego mięsiąca i roku, w którym zapisano wszystkie wydarzenia oznaczone na kalendarzu ze strony [wydziału EEIA](http://www.weeia.p.lodz.pl/).
+
+### Przykładowy plik:
+[plik dla marca 2020 roku](https://raw.githubusercontent.com/AlicjaDziuda/ppkwu3/master/demo/demo/Month03Year2020Calendar.ics)
+
+## Uwagi:
+
+### 1. Niepoprawna forma miesiąca:
+#### Konieczne jest aby miesiące od stycznia do września poprzedzać zerem.
+#### Przykład:
+##### Zapytanie typu :  
 ```
 http://localhost:8080/api/calendar/2020/3
 ```
-##### Otrzymamy plik nie zawierający żadnych wydarzeń 
+##### Wygeneruje plik nie zawierający żadnych wydarzeń 
 
-### Jeżeli użytkownik wprowadzi miesiąc który nie istnieje, np 0, 00, -54, 243 to otrzyma informacje :	
+### 2. Podanie nieistniejącego miesiąca:
+#### Wprowadzenie miesiąca, który nie istnieje, np. 0, 00, -54, 243 to otrzyma informacje :
+#### Przykład:
+##### Zapytanie typu :  
 ```
+http://localhost:8080/api/calendar/2020/-32
+```
+##### Nie wygeneruje żadnego pliku. Pojawi się tylko komunikat: 
+```bash
 Nie prawidłowy miesiąc
-```
-#### Plik nie zostanie wygenerowany
+```  
