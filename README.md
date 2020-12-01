@@ -28,7 +28,7 @@ http://localhost:8080/api/calendar/2020/3
 ##### Wygeneruje plik nie zawierający żadnych wydarzeń 
 
 ### 2. Podanie nieistniejącego miesiąca:
-#### Wprowadzenie miesiąca, który nie istnieje, np. 0, 00, -54, 243 to otrzyma informacje :
+#### Wprowadzenie miesiąca, który nie istnieje, np. 0, 00, -54, 243 wygeneruje odpowiedni komunikat:
 #### Przykład:
 ##### Zapytanie typu :  
 ```
